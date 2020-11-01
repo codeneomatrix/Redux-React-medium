@@ -4,10 +4,37 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { createStore } from 'redux'
+import rootReducer from './reducers'
+//import {agregarTarea} from './actions'
+import { Provider } from 'react-redux'
+
+// Creamos el store al pasar el reducer raiz
+const store = createStore(rootReducer)
+
+// creamos nuestro creador de acciones fusionado llamado fusion_agregarTarea
+// const fusion_agregarTarea = tarea => store.dispatch(agregarTarea(tarea))
+
+// Mostramos el estado inicial
+// console.log(store.getState())
+
+// Cada vez que el estado cambie, lo mostramos
+// Tenga en cuenta que subscribe() devuelve una función para anular el registro del listener
+// let unsubscribe = store.subscribe(() =>
+//  console.log(store.getState())
+//)
+
+// Enviamos algunas acciones
+// fusion_agregarTarea ("Tarea 1_fusionada");
+// fusion_agregarTarea ("Tarea 2_fusionada");
+
+// Anulamos el monitoreo de las actualizaciones al estado
+// unsubscribe()
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store = {store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
